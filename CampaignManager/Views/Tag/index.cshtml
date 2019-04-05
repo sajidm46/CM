@@ -1,0 +1,40 @@
+﻿@model  CampaignManager.Models.TagViewModel
+
+<div class="css-sm-table" style="">
+    @if (Model != null)
+    {
+        <div class="table-header">
+            <div class="row">
+                <div class="col-sm-7 campaign-manager float-left ">@Html.Label("Tag", new { id = "lblTagHeader" })</div>
+                <div class="col-sm-2 campaign-manager float-left ">@Html.Label("First Seen", new { id = "lblFirstSeenHeader" })</div>
+                <div class="col-sm-2 campaign-manager float-left ">@Html.Label("Last Seen", new { id = "lblLastSeenHeader" })</div>
+            </div>
+        </div>
+
+        <div class="table-body">
+
+@if (Model.Tags.Count >= 1)
+{
+    foreach (MailgunAPIDirect.Entities.Tag tag in Model.Tags)
+    {
+
+        <div class="row">
+            <div class="col-sm-7 campaign-manager float-left">
+                <a href="/Tag/TagStats/?id=@Url.Encode(tag.tag)&start=@Url.Encode(tag.first_seen.ToShortDateString())" >@tag.tag</a>
+            </div>
+            <div class="col-sm-2 campaign-manager float-left ">@tag.first_seen.ToShortDateString()</div>
+            <div class="col-sm-2 campaign-manager float-left ">@tag.last_seen.ToShortDateString()</div>
+        </div>
+    }
+}
+
+
+        </div>
+    }
+    else
+    {
+        <p>@{Html.RenderPartial("_MessagePartial"); }</p>
+    }
+</div>
+
+

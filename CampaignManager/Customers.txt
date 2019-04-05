@@ -1,0 +1,49 @@
+﻿ADMIN USER:
+email: CMAdmin@Ez-Runner.com
+pw: cM_Adm1n3zR
+
+email: simon.e@Ez-Runner.com
+pw : cM_5imon3Nt
+
+email: CM@odysseyhealthclubs.com
+pw : cM_0dyss3y
+
+email: CM@airvault.co.uk
+pw : cM_a1rV0u1T
+
+email: CM@nirvanaspa-pulse8gym.co.uk
+pw : cM_N1rvaNa
+
+email: CM@jumpstreet.co.uk
+pw : cM_JumpsTr33t
+
+email: CM@freedog.com
+pw : cM_fr3ed0g
+
+email: CM@funfactoryrochford.co.uk
+pw : cM_Funf4ct0ry
+
+email: CM@goairtrampolinepark.co.uk
+pw : cM_G04irTramp0
+
+email: CM@gojumpin.com
+pw : cM_G0jump!n
+
+email: CM@jumptastic.uk
+pw : cM_Jumpt4st1C
+
+email: CM@oxygenfreejumping.co.uk
+pw : cM_Oxyg3nfre3
+
+email: CM@skyhightrampolining.com
+pw : cM_Skyh!gh
+
+
+email: CM@e6.flipout.co.uk
+pw : cM_e6flip0uT
+
+email: CM@zoomania.co.uk
+pw : cM_zo0Mani4
+
+email: CM@krazykangaroo.nl.com
+pw : cM_kr4zykang4r0O

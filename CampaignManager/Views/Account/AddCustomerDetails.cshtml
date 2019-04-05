@@ -1,0 +1,70 @@
+﻿@model CMEntities.Entities.CustomerDetails
+@{
+    ViewBag.Title = "Add Customer Details";
+}
+
+@using (Html.BeginForm("AddCustomerDetails", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Add a new customer.</h4>
+    <hr />
+  
+    <div class="form-group">
+        @Html.LabelFor(m => m.CustomerUniqueId, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CustomerUniqueId, new { @class = "form-control customer-details-form", Title = "e.g AIR004" })
+            @Html.ValidationMessageFor(x =>x.CustomerUniqueId,"",new { @class = "customer-details-form-error" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.DomainName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.DomainName, new { @class = "form-control customer-details-form" })
+            @Html.ValidationMessageFor(x => x.DomainName, "", new { @class = "customer-details-form-error" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ApiKey, new { @class = "col-md-2 control-label " })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.ApiKey, new { @class = "form-control customer-details-form" })
+            @Html.ValidationMessageFor(x => x.ApiKey, "", new { @class = "customer-details-form-error" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DBConnectionString, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.DBConnectionString, new { @class = "form-control customer-details-form" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.LoginName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.LoginName, new { @class = "form-control customer-details-form" })
+            @Html.ValidationMessageFor(x => x.LoginName, "", new { @class = "customer-details-form-error" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Password, new { @class = "form-control customer-details-form" })
+            @Html.ValidationMessageFor(x => x.Password, "", new { @class = "customer-details-form-error" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.FromAddress, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FromAddress, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Submit" />
+        </div>
+    </div>
+}

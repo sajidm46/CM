@@ -1,0 +1,23 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+<ul class="nav navbar-nav navbar-right">
+    <li><a href="#" style="color: #ab8a58;"><b><font color="#a98180">Welcome</font></b> @System.Web.HttpContext.Current.Session["Email"]</a></li>
+    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+</ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        @if (HttpContext.Current.User.Identity.Name == "CMAdmin@Ez-Runner.com")
+        {
+            <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        }
+        <li>@Html.ActionLink("Sign in", "Login", "Account")</li>
+    </ul>
+}

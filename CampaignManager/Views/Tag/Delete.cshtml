@@ -1,0 +1,49 @@
+﻿@model  CampaignManager.Models.TagViewModel
+@{
+    ViewBag.Title = "DeleteTag";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Delete Tag</h2>
+<div class="css-sm-table" style="">
+    @if (Model != null)
+    {
+        <div class="table-header">
+            <div class="row">
+                <div class="col-sm-6 campaign-manager float-left ">@Html.Label("Tag", new { id = "lblTagHeader" })</div>
+                <div class="col-sm-2 campaign-manager float-left ">@Html.Label("First Seen", new { id = "lblFirstSeenHeader" })</div>
+                <div class="col-sm-2 campaign-manager float-left ">@Html.Label("Last Seen", new { id = "lblLastSeenHeader" })</div>
+                <div class="col-sm-1 campaign-manager float-left "></div>
+            </div>
+        </div>
+
+        <div class="table-body">
+            @foreach (MailgunAPIDirect.Entities.Tag tag in Model.Tags)
+            {
+
+                <div class="row">
+                    <div class="col-sm-6 campaign-manager float-left ">
+                        <a href="/Tag/TagStats/?id=@Url.Encode(tag.tag)&start=@Url.Encode(tag.first_seen.ToShortDateString())">@tag.tag</a>
+
+                    </div>
+                    <div class="col-sm-2 campaign-manager float-left ">@tag.first_seen.ToShortDateString()</div>
+                    <div class="col-sm-2 campaign-manager float-left ">@tag.last_seen.ToShortDateString()</div>
+                    <div class="col-sm-1 campaign-manager float-left "><input type="button" value="Del" class="btn btn-md btn-danger" onclick="location.href='@Url.Action("DeleteTag", "Tag",new { id = @tag.tag })'" /></div>
+                    <div class="col-sm-1 campaign-manager float-left css-AreYouSure-YesNo">
+                        <input type="button" value="No" class="btn btn-md btn-danger" onclick="fn_do()" />
+                        @*<input type="button" value="Yes" class="btn btn-md btn-danger" onclick="location.href='@Url.Action("DeleteTag", "Tag",new { id = @tag.tag })'" />*@
+                    </div>
+                </div>
+
+
+
+            }
+        </div>
+    }
+</div>
+<script>
+    function fn_do()
+    {
+        $('.css-AreYouSure-YesNo').hide(); 
+        }
+}
+</script>
