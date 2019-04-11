@@ -6,16 +6,16 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
-
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <script src="~/Scripts/Ez-runnerSM.js"></script>
+    <script src="~/Scripts/Chart.min.js"></script>
     <style>
-        
     </style>
 
 </head>
-<body>
+<body style="background-color: #dee6e6;"  onload="init()">
     <div class="container">
-        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse css-sm-tag">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -32,7 +32,7 @@
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav menu-item">
         <li><a href="#">@Html.ActionLink("Tags", "Index", "Tag")</a></li>
-        <li><a href="#">@Html.ActionLink("Remove Tag", "Delete", "Tag")</a></li>
+        @*<li><a href="#">@Html.ActionLink("Remove Tag", "Delete", "Tag")</a></li>*@
         @if (HttpContext.Current.User.Identity.Name == "CMAdmin@Ez-Runner.com")
         {
             <li>@Html.ActionLink("Add Customer Details", "AddCustomerDetails", "Account", routeValues: null, htmlAttributes: new { @class = "nav-spacer" })</li>
@@ -50,14 +50,13 @@
     </div>
     <div class="container body-content">
         <div class="tag-table-container">
-            
             @RenderBody()
         </div>
     </div>
         <div id="poweredBy">
             Powered by
             <a href="http://www.ez-runner.com/index.php/en/">
-                <img id="ctl00_Image1" src="../images/poweredBy.png">
+                <img id="ctl00_Image1" src="~/images/poweredBy.png">
             </a>
         </div>
         @Scripts.Render("~/bundles/jquery")

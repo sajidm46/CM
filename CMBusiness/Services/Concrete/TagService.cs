@@ -18,6 +18,7 @@ namespace CMBusiness.Services.Concrete
 
         public List<Tag> Get()
         {
+
             List<Tag> listOfTags = new List<Tag>();
             try
             {
@@ -57,7 +58,7 @@ namespace CMBusiness.Services.Concrete
         internal EventStats GetStatsCumulativeTotals(List<EventStats> listOfStatsByDay)
         {
             EventStats theEventStatsWeWant = new EventStats();
-
+            if (listOfStatsByDay == null) return null;
             foreach (EventStats eventStat in listOfStatsByDay)
             {
                 theEventStatsWeWant.tag = eventStat.tag;

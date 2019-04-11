@@ -21,6 +21,12 @@ namespace MailgunAPIDirect
 
         public static Tag GetTag(string id)
         {
+            //--------------------
+            var restClient = new RestClient("http://localhost");
+            var req = new RestRequest("bob", Method.GET);
+            //------------------------------------
+
+
             customer = new Customer();
 
             var client = new RestClient
@@ -55,7 +61,8 @@ namespace MailgunAPIDirect
             request.AddParameter("domain",
                                    customer.DomainName, ParameterType.UrlSegment);
             request.Resource = "{domain}/tags";
-            request.AddParameter("limit", 1000);
+            request.AddParameter("limit", 1001);
+            //request.AddParameter("page", "Next");
 
             var response = client.Execute<dynamic>(request);
             if (response.Data["items"] != null)
@@ -70,27 +77,43 @@ namespace MailgunAPIDirect
 
                 //Repeat until no tags to add
                 var next = JsonConvert.SerializeObject(response.Data["paging"]);
-                Next nextPageOfResultsLink = JsonConvert.DeserializeObject<Next>(next);
+                string strnext = next;
 
+                //strnext = strnext.Replace(strnext.Substring(strnext.IndexOf("&tag=_cmp__platinum_price_for_gold_acton"), "&tag=_cmp__platinum_price_for_gold_acton".Length), "");
+                strnext = strnext.Replace("http://", "https://");
+                Next nextPageOfResultsLink = JsonConvert.DeserializeObject<Next>(strnext);
+                //http://api.mailgun.net/v3/oxygenfreejumping.co.uk/tags?page=next&tag=_cmp__platinum_price_for_gold_acton&limit=1000
+                //http://api.mailgun.net/v3/oxygenfreejumping.co.uk/tags?page=next&tag=_cmp__platinum_price_for_gold_acton&limit=1000
                 //theTagsToAdd = null;
-                if (theTagsToAdd.Count == 1000)
+                try
                 {
-                    do
+                    if (theTagsToAdd.Count == 1000)
                     {
-                        RestRequest request2 = new RestRequest(nextPageOfResultsLink.NextNext.ToString(), Method.GET);
-                        var response2 = client.Execute<dynamic>(request2);
-                        next = JsonConvert.SerializeObject(response2.Data["paging"]);
-                        nextPageOfResultsLink = JsonConvert.DeserializeObject<Next>(next);
-                        theTagsJson = JsonConvert.SerializeObject(response2.Data["items"]);
-                        theTagsToAdd = JsonConvert.DeserializeObject<List<Tag>>(theTagsJson);
-                        foreach (Tag tagToAdd in theTagsToAdd)
+                        do
                         {
-                            theTagsWeWant.Add(tagToAdd);
-                        }
+                            RestRequest request2 = new RestRequest(nextPageOfResultsLink.NextNext.ToString(), Method.GET);
+                            var response2 = client.Execute<dynamic>(request2);
+                           
+                                next = JsonConvert.SerializeObject(response2.Data["paging"]);
+                            strnext = next;
+                                strnext = strnext.Replace("http://", "https://");
+                                nextPageOfResultsLink = JsonConvert.DeserializeObject<Next>(strnext);
+                                theTagsJson = JsonConvert.SerializeObject(response2.Data["items"]);
+                                theTagsToAdd = JsonConvert.DeserializeObject<List<Tag>>(theTagsJson);
+                                foreach (Tag tagToAdd in theTagsToAdd)
+                                {
+                                    theTagsWeWant.Add(tagToAdd);
+                                }
+                           
 
-                    } while (theTagsToAdd.Count == 1000);
+                        } while (theTagsToAdd.Count == 1000);
+                    }
+                }
+                catch (Exception ex)
+                {
                 }
                 var tagsPurged = theTagsWeWant.Where(t => t.tag.Contains("[CMP]"));
+                var delievered = theTagsWeWant.Where(dt => dt.first_seen != Convert.ToDateTime("01/01/0001")).OrderBy(d => d.first_seen).First();
                 return tagsPurged.OrderByDescending(t => t.first_seen).ToList<Tag>();
             }
 

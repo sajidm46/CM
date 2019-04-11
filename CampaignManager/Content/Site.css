@@ -205,14 +205,12 @@ label {
 }
 
 .tag-table-container {
-    width: 85%;
     padding: 10px 105px 110px 105px;
-    background-color: white;
     margin-right: auto;
     margin-left: auto;
     margin-top: 20px;
     position: relative;
-    box-shadow: 0px 0px 4px #0000007d;
+    
 }
 
 
@@ -222,8 +220,26 @@ label {
     font-size:14px;
 }
 
+.css-sm-container-each
+{
+    
+}
+
+    .css-sm-container-each > div {
+        background-color: white !important;
+        box-shadow: 0px 0px 4px grey !important;
+        text-align: center;
+        padding: 2em 3em 6em 3em;
+        width: 1302px !important;
+    }
+    .css-sm-container-each > div > div{
+        text-align: justify;
+        /*padding: 8em 3em 0em 3em*/
+    }
+
+
 .css-sm-table {
-    padding: 15px 5px 11px 5px; 
+    padding: 15px 5px 11px 5px;
 }
 
     .css-sm-table .table-header label {
@@ -245,15 +261,27 @@ label {
         line-height: 39px;
         width: 97%;
         border-bottom: 1px solid #f7f3f3;
+        
     }
         .css-sm-table .table-body .row:nth-of-type(even) {
             background-color: #fbf9f7;
+            
         }
 
 
 .css-sm-table-TagStatus {
     padding: 15px 5px 11px 5px;
 }
+
+    .css-sm-table-TagStatus lbl {
+        font-size: 13px;
+        position: absolute;
+        margin-top: -18px !important;
+        color: #7c828e;
+        font-weight: lighter;
+        text-shadow: 0px 1px 0px white;
+    }
+
 
     .css-sm-table-TagStatus .table-header label {
         font-weight: bolder;
@@ -278,12 +306,12 @@ label {
     }
 
         .css-sm-table-TagStatus .table-body .row:nth-of-type(even) {
-            background-color: #fbfbfb;
+            background-color: #efefef;
             font-weight: bold;
             text-shadow: 0px 1px 0px white;
-            border: 1px solid #eceaea;
             color: #8e8585;
             text-shadow: -1px 0px 1px #f8f9f6;
+            padding: 0px 0px 52px 48px !important;
         }
 
         
@@ -297,3 +325,169 @@ label {
 {
     display: none;
 }
+.css-sm-fontsize25 {
+    font-size: 25px;
+    text-shadow: -1px -1px 0 white
+}
+
+.css-sm-summarytop {
+    /* background-color: #ffffff; */
+    padding: 8px 0px 16px 0px;
+    border-bottom: 7px solid #ecde97;
+    /* border-radius: 9px; */
+    font-size: 28px;
+    font-weight: bold;
+    color: #826d6d;
+    margin-bottom: 30px;
+    height: 77px;
+    
+}
+
+    .css-sm-summarytop label {
+        font-weight: bold;
+        color: #777171;
+    }
+
+
+
+    .css-sm-summarytop label2 {
+        font-size: 12px;
+        font-weight: lighter;
+        position: absolute;
+        padding: 10px;
+        margin-top: -12px;
+        margin-left: -10px;
+    }
+
+    .css-sm-summarytop prc {
+        font-size: 12px;
+        font-weight: lighter;
+        
+    }
+
+.css-sm-tagfilter {
+    background-color: #f1e5e5;
+    padding: 8px 0px 10px 0px;
+    border: 1px solid #d4c5c5;
+    border-radius: 2px;
+    font-size: 12px;
+    color: #826d6d;
+    margin-bottom: 30px;
+}
+
+    .css-sm-tagfilter div {
+        padding: 0px;
+        padding-top: 15px;
+    }
+
+    .css-sm-tagfilter label {
+        font-size: 14px;
+        font-weight: bold;
+        margin-left: 15px;
+    }
+
+#ul_daysselector li {
+    font-size: 12px;
+    text-decoration: none;
+    margin-right: 80px !important;
+}
+#ul_daysselector a {
+    color: #9a7878;
+    text-shadow: 0px 1px 0px white;
+    font-weight: bold;
+}
+
+    #ul_daysselector a:hover {
+        color: #caaaaa !important;
+        text-shadow: 0px 0px 3px #ffca68;
+        text-decoration: none;
+    }
+
+    .LIactive a {
+        color: red !important;
+    }
+
+    .css-sm-tagfilter p {
+        position: absolute;
+        font-weight: bold;
+        margin-left: 220px;
+
+    }
+
+    .css-sm-tagfilter #inp_filtertag {
+        margin-top: 2px;
+    }
+
+    .css-sm-tagfilter #a_update {
+        background-color: #d2c4c4 !important;
+        border: 1px solid #afa6a6 !important;
+        float: right;
+        text-decoration: none;
+    }
+
+.css-sm-tag a:hover
+{
+    cursor: pointer;
+}
+
+#loginForm
+{
+    
+}
+
+.css-sm-table-1 {
+    width: 100%;
+    border: 0px solid gray;
+}
+
+    .css-sm-table-1 thead tr {
+        
+        height: 72px;
+    }
+
+    .css-sm-table-1 thead td {
+    width: 25%;
+    }
+
+    .css-sm-table-1 thead label {
+        font-weight: bold;
+        color: #777171;
+        font-size: 25px;
+        margin-left: 15px;
+    }
+
+
+
+    .css-sm-table-1 thead label2 {
+        font-size: 12px;
+        font-weight: lighter;
+        position: absolute;
+        padding: 10px;
+        margin-top: -12px;
+        margin-left: 5px;
+        width: 350px;
+    }
+
+    .css-sm-table-1 tr lbl {
+        font-size: 12px;
+        font-weight: lighter;
+        position: absolute;
+        padding: 10px;
+        margin-top: -8px;
+        margin-left: -10px;
+        
+    }
+    .css-sm-table-1 tr {
+        height: 54px;
+    }
+
+    .css-sm-table-1 tr:nth-child(even) {
+        background-color:#e6d7d7;
+    }
+
+
+    .css-sm-table-1 css-sm-animate-slideUp {
+    }
+
+    .css-sm-table-1 tr td{
+    }

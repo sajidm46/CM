@@ -1,40 +1,71 @@
 ﻿@model  CampaignManager.Models.TagViewModel
 
-<div class="css-sm-table" style="">
-    @if (Model != null)
-    {
-        <div class="table-header">
-            <div class="row">
-                <div class="col-sm-7 campaign-manager float-left ">@Html.Label("Tag", new { id = "lblTagHeader" })</div>
-                <div class="col-sm-2 campaign-manager float-left ">@Html.Label("First Seen", new { id = "lblFirstSeenHeader" })</div>
-                <div class="col-sm-2 campaign-manager float-left ">@Html.Label("Last Seen", new { id = "lblLastSeenHeader" })</div>
-            </div>
-        </div>
-
-        <div class="table-body">
-
-@if (Model.Tags.Count >= 1)
+@if (Model != null)
 {
-    foreach (MailgunAPIDirect.Entities.Tag tag in Model.Tags)
+
+    using (Html.BeginForm())
     {
 
-        <div class="row">
-            <div class="col-sm-7 campaign-manager float-left">
-                <a href="/Tag/TagStats/?id=@Url.Encode(tag.tag)&start=@Url.Encode(tag.first_seen.ToShortDateString())" >@tag.tag</a>
+    <div class="col-md-offset-1 col-md-10 css-sm-container-each" style="">
+        <div>
+            <div class="col-sm-12 css-sm-tagfilter form-group form-inline">
+
+                <div class="col-sm-2">
+                    <label>Show Campaigns: </label>
+                </div>
+                
+                <div class="col-sm-6">
+                    <ul id="ul_daysselector" style="list-style: none; ">
+                        <li style="display: inline;" id="d_1" ><a href="/Tag/Index/?radioId=rd_last30">Last 30 Days</a></li>
+                        <li style="display: inline;" id="d_2" ><a href="/Tag/Index/?radioId=rd_last365">Last 365 Days</a></li>
+                        <li style="display: inline;" id="d_3" ><a href="/Tag/Index/?radioId=all">All</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-4">
+                    <p>@ViewData["TotalTags"]</p>
+                </div>
             </div>
-            <div class="col-sm-2 campaign-manager float-left ">@tag.first_seen.ToShortDateString()</div>
-            <div class="col-sm-2 campaign-manager float-left ">@tag.last_seen.ToShortDateString()</div>
+
+
+            <h2>Tags</h2>
+            <div class="css-sm-table" style="">
+
+                <div class="table-header">
+                    <div class="row">
+                        <div class="col-sm-8 campaign-manager float-left ">@Html.Label("Tag", new { id = "lblTagHeader" })</div>
+                        <div class="col-sm-2 campaign-manager float-left ">@Html.Label("First Seen", new { id = "lblFirstSeenHeader" })</div>
+                        <div class="col-sm-2 campaign-manager float-right ">@Html.Label("Last Seen", new { id = "lblLastSeenHeader" })</div>
+                    </div>
+                </div>
+
+                <div class="table-body">
+                    @if (Model.Tags.Count >= 1)
+                    {
+                        int counter = 1;
+                        foreach (MailgunAPIDirect.Entities.Tag tag in Model.Tags)
+                        {
+                            counter++;
+                            <div class="row">
+                                <div class="col-sm-8 campaign-manager float-left">
+                                    <a href="/Tag/TagStats/?id=@Url.Encode(tag.tag)&start=@Url.Encode(tag.first_seen.ToShortDateString())&end=@Url.Encode(tag.last_seen.ToShortDateString())">@tag.tag</a>
+                                </div>
+                                <div class="col-sm-2 campaign-manager float-left ">@tag.first_seen.ToShortDateString()</div>
+                                <div class="col-sm-2 campaign-manager float-right ">@tag.last_seen.ToShortDateString()</div>
+                            </div>
+                        }
+                    }
+
+                </div>
+                
+
+            </div>
         </div>
+    </div>
     }
 }
 
-
-        </div>
+else
+{
+< p >@{ Html.RenderPartial("_MessagePartial"); }</ p >
     }
-    else
-    {
-        <p>@{Html.RenderPartial("_MessagePartial"); }</p>
-    }
-</div>
-
-
