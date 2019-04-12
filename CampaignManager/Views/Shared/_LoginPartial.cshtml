@@ -6,7 +6,7 @@
     @Html.AntiForgeryToken()
 
 <ul class="nav navbar-nav navbar-right">
-    <li><a href="#" style="color: #ab8a58;"><b><font color="#a98180">Welcome</font></b> @System.Web.HttpContext.Current.Session["Email"]</a></li>
+    <li><a href="#" style="color: #ab8a58;"><b><font color="#a98180">Welcome</font></b> @Session["Email"]</a></li>
     <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
 </ul>
     }

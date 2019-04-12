@@ -105,12 +105,12 @@
 
 
             <h3>
-                <label style="color: #667957;
+                <label style="    color: #667957;
     padding: 20px;
-    border-bottom: 3px solid #7ea793;
+    border-bottom: 3px solid #6a8a7a;
     border-radius: 1px;
     box-shadow: 0px 2px 3px #a8c3b9;
-    background-color: #f5f5f5;">@Model.tag</label>
+    background-color: #ffffff;">@Model.tag</label>
 </h3>
 <hr />
 
@@ -126,25 +126,6 @@
 
         <table class="css-sm-table-1">
             <thead>
-                <tr>
-                    <td colspan="4">
-                        <a class="glyphicon glyphicon-eye-open btn btn-md btn-warning" style="float: left; margin-left: 20px; margin-bottom: 30px; font-size: 18px;" onclick="fn_showhide_chart(0)"></a>
-
-                        <canvas id="myChart11" style="
-    border: 1px solid #a7a1a1;
-    box-shadow: 0px 0px 2px 0px grey;
-    padding: 25px;
-    display: block;
-    width: 1176px;
-    max-width: 1176px;
-    height: 635px;
-    margin: auto;
-    margin-bottom: 30px;
-    background-color: #f5f5f5;
-    " width="1176" height="635" class="chartjs-render-monitor"></canvas>
-                    </td>
-                </tr>
-
                 <tr style="background-color: white; height: 80px; border-bottom: 5px solid #ecde97">
                     <td>
                         <div class="css-sm-animate-slideUp">
@@ -237,6 +218,25 @@
                     <td></td>
                     <td></td>
                 </tr>
+                <tr style="background-color: white; ">
+                    <td colspan="4" style="padding-top: 20px;">
+                        <div id="span_hideshowchart" class="btn btn-sm btn-default" onclick="fn_showhide_chart(0)" style="float: left; margin-bottom: 30px; font-size: 18px;">
+                            Show/Hide Chart
+                            @*<i class="glyphicon glyphicon-eye-open" style="display: none;"></i>
+                            <i class="glyphicon glyphicon-eye-close"></i>*@
+                        </div>
+                        <canvas id="myChart11" style="
+    border: 1px solid #a7a1a1;
+    box-shadow: 0px 0px 2px 0px grey;
+    padding: 25px;
+    display: block;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 30px;
+    background-color: #f5f5f5;
+    " width="1176" height="635" class="chartjs-render-monitor"></canvas>
+                    </td>
+                </tr>
             </thead>
             <tbody>
                 <tr>
@@ -249,8 +249,8 @@
                     
                     <td></td>
                     <td></td>
-                    <td>
-                        <div class="campaign-manager float-left css-sm-animate-fadeIn css-sm-fontsize25" style="display: none;">
+                    <td class="css-sm-pad-left-100">
+                        <div class="campaign-manager float-left css-sm-animate-fadeIn css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                             @Model.Accepted.Incoming.ToString("#,##0")
                             <br />
                             <lbl>Incoming</lbl>
@@ -259,17 +259,13 @@
                         </div>
 
                     </td>
-                    <td>
-
-                        <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn css-sm-fontsize25" style="display: none;">
+                    <td class="css-sm-pad-left-100">
+                        <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                             @Model.Accepted.Total.ToString("#,##0")
-
                             <br />
                             <lbl>Accepted</lbl>
                         </div>
-
                     </td>
-
                 </tr>
                 <tr>
                     <td colspan="4">
@@ -283,8 +279,8 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>
-                        <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+                    <td class="css-sm-pad-left-100">
+                        <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                             @(
                                                                                                                                 (Convert.ToInt32(Model.Delivered.Total) + Convert.ToInt32(Model.Failed.Permanent.Total)).ToString("#,###0")
                             )
@@ -306,8 +302,8 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>
-                        <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+                    <td class="css-sm-pad-left-100">
+                        <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                             @Model.Delivered.Total.ToString("#,##0")
                             <br />
                             <lbl>Delivered</lbl>
@@ -326,24 +322,18 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>
-                        <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+                    <td class="css-sm-pad-left-100">
+                        <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                             @Model.Failed.Permanent.Total.ToString("#,##0")
                             <br />
                             <lbl>Failed</lbl>
                         </div>
                     </td>
-
                 </tr>
                 <tr>
                     <td colspan="4">
-
-
                         <div class="col-sm-2 campaign-manager float-left ">@Html.Label("Bounced", new { id = "lblBounced", @class = "css-sm-bold" })</div>
                         <div class="col-sm-10 campaign-manager float-left  light-grey">Mailgun could not deliver the email to the recipient email server.</div>
-
-
-
                     </td>
                 </tr>
                 <tr>
@@ -351,68 +341,57 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>
-                        <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+                    <td class="css-sm-pad-left-100">
+                        <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                             @Model.Failed.Permanent.Total.ToString("#,##0")
                             <br />
                             <lbl>Bounced</lbl>
-
                         </div>
                     </td>
-
                 </tr>
 
 
 
                 <tr>
                     <td colspan="4">
-
                         <div class="col-sm-2 campaign-manager float-left ">@Html.Label("Opened", new { id = "lblOpened", @class = "css-sm-bold" })</div>
                         <div class="col-sm-10 campaign-manager float-left  light-grey">The email recipient opened the email and enabled image viewing.</div>
-
-
-
-
-
                     </td>
                 </tr>
+
                 <tr>
-                    
                     <td></td>
                     <td></td>
-                    <td>
-                        <div class="col-sm-2 campaign-manager float-right css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+                    <td class="css-sm-pad-left-100">
+                        <div class="col-sm-2 campaign-manager float-right css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                             @Model.Opened.Unique.ToString("#,##0")
                             <br />
                             <lbl>Unique</lbl>
-
                         </div>
                     </td>
-                    <td>
-                        <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+
+                    <td class="css-sm-pad-left-100">
+                        <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                             @Model.Opened.Total.ToString("#,##0")
                             <br />
                             <lbl>Opened</lbl>
                         </div>
                     </td>
-
                 </tr>
+
                 <tr>
                     <td colspan="4">
                         <div class="col-sm-2 campaign-manager float-left ">@Html.Label("stored", new { id = "lblStored", @class = "css-sm-bold" })</div>
                         <div class="col-sm-10 campaign-manager float-left  light-grey">Mailgun has stored an incoming message.</div>
-
-
-
                     </td>
                 </tr>
+
                 <tr>
-                    
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>
-                        <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+                    <td class="css-sm-pad-left-100">
+                        <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                             @Model.Opened.Total.ToString("#,##0")
                             <br />
                             <lbl>stored</lbl>
@@ -429,16 +408,16 @@
                     
                     <td></td>
                     <td></td>
-                    <td>
-                        <div class="col-sm-2 campaign-manager float-right css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+                    <td class="css-sm-pad-left-100">
+                        <div class="col-sm-2 campaign-manager float-right css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                             @Model.Clicked.Unique.ToString("#,##0")
                             <br />
                             <lbl>Unique</lbl>
 
                         </div>
                     </td>
-                    <td>
-                        <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+                    <td class="css-sm-pad-left-100">
+                        <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                             @Model.Clicked.Total.ToString("#,##0")
                             <br />
                             <lbl>Clicked</lbl>
@@ -455,13 +434,13 @@
 
                     </td>
                 </tr>
+
                 <tr>
-                    
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>
-                        <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+                    <td class="css-sm-pad-left-100">
+                        <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                             @Model.Complained.Total.ToString("#,##0")
                             <br />
                             <lbl>Complained</lbl>
@@ -473,9 +452,6 @@
                     <td colspan="4">
                         <div class="col-sm-2 campaign-manager float-left ">@Html.Label("Unsubscribed", new { id = "lblUnsubscribed", @class = "css-sm-bold" })</div>
                         <div class="col-sm-10 campaign-manager float-left  light-grey">The email recipient clicked on the unsubscribe link.</div>
-
-
-
                     </td>
                 </tr>
                 <tr>
@@ -483,8 +459,8 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>
-                        <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+                    <td class="css-sm-pad-left-100">
+                        <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                             @Model.Unsubscribed.Total.ToString("#,##0")
                             <br />
                             <lbl>Unsubcribed</lbl>
@@ -507,8 +483,8 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>
-                        <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+                    <td class="css-sm-pad-left-100">
+                        <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                             @Model.Failed.Temporary.Total.ToString("#,##0")
                             <br />
                             <lbl>Failed(Temp)</lbl>
@@ -532,7 +508,7 @@
                 <div class="col-sm-1 campaign-manager float-left "></div>
                 <div class="col-sm-2 campaign-manager float-right "></div>
                 <div class="col-sm-3 campaign-manager float-left "></div>
-                <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn css-sm-fontsize25" style="display: none;">
+                <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                     @Model.Accepted.Incoming.ToString("#,##0")
                     <br />
                     <lbl>Incoming</lbl>
@@ -540,7 +516,7 @@
 
                 </div>
 
-                <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn css-sm-fontsize25" style="display: none;">
+                <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                     @Model.Accepted.Total.ToString("#,##0")
 
                     <br />
@@ -557,7 +533,7 @@
                 <div class="col-sm-2 campaign-manager float-left "></div>
                 <div class="col-sm-1 campaign-manager float-left "></div>
                 <div class="col-sm-3 campaign-manager float-left "></div>
-                <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+                <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                     @(
                                                         (Convert.ToInt32(Model.Delivered.Total) + Convert.ToInt32(Model.Failed.Permanent.Total)).ToString("#,###0")
                     )
@@ -576,7 +552,7 @@
                 <div class="col-sm-2 campaign-manager float-left "></div>
                 <div class="col-sm-2 campaign-manager float-left "></div>
                 <div class="col-sm-3 campaign-manager float-left "></div>
-                <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+                <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                     @Model.Delivered.Total.ToString("#,##0")
                     <br />
                     <lbl>Delivered</lbl>
@@ -593,7 +569,7 @@
                 <div class="col-sm-2 campaign-manager float-left "></div>
                 <div class="col-sm-1 campaign-manager float-left "></div>
                 <div class="col-sm-3 campaign-manager float-left "></div>
-                <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+                <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                     @Model.Failed.Permanent.Total.ToString("#,##0")
                     <br />
                     <lbl>Failed</lbl>
@@ -613,7 +589,7 @@
                 <div class="col-sm-2 campaign-manager float-left "></div>
                 <div class="col-sm-1 campaign-manager float-left "></div>
                 <div class="col-sm-3 campaign-manager float-left "></div>
-                <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+                <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                     @Model.Failed.Permanent.Total.ToString("#,##0")
                     <br />
                     <lbl>Bounced</lbl>
@@ -629,14 +605,14 @@
                 <div class="col-sm-2 campaign-manager float-left "></div>
                 <div class="col-sm-2 campaign-manager float-left "></div>
                 <div class="col-sm-3 campaign-manager float-left "></div>
-                <div class="col-sm-2 campaign-manager float-right css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+                <div class="col-sm-2 campaign-manager float-right css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                     @Model.Opened.Unique.ToString("#,##0")
                     <br />
                     <lbl>Unique</lbl>
 
                 </div>
 
-                <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+                <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                     @Model.Opened.Total.ToString("#,##0")
                     <br />
                     <lbl>Opened</lbl>
@@ -653,7 +629,7 @@
                 <div class="col-sm-2 campaign-manager float-left "></div>
                 <div class="col-sm-1 campaign-manager float-left "></div>
                 <div class="col-sm-3 campaign-manager float-left "></div>
-                <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+                <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                     @Model.Opened.Total.ToString("#,##0")
                     <br />
                     <lbl>stored</lbl>
@@ -671,14 +647,14 @@
                 <div class="col-sm-1 campaign-manager float-left "></div>
                 <div class="col-sm-2 campaign-manager float-left "></div>
                 <div class="col-sm-3 campaign-manager float-left "></div>
-                <div class="col-sm-2 campaign-manager float-right css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+                <div class="col-sm-2 campaign-manager float-right css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                     @Model.Clicked.Unique.ToString("#,##0")
                     <br />
                     <lbl>Unique</lbl>
 
                 </div>
 
-                <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+                <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                     @Model.Clicked.Total.ToString("#,##0")
                     <br />
                     <lbl>Clicked</lbl>
@@ -695,7 +671,7 @@
                 <div class="col-sm-2 campaign-manager float-left "></div>
                 <div class="col-sm-1 campaign-manager float-left "></div>
                 <div class="col-sm-3 campaign-manager float-left "></div>
-                <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+                <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                     @Model.Complained.Total.ToString("#,##0")
                     <br />
                     <lbl>Complained</lbl>
@@ -711,7 +687,7 @@
             <div class="col-sm-2 campaign-manager float-left "></div>
             <div class="col-sm-1 campaign-manager float-left "></div>
             <div class="col-sm-3 campaign-manager float-left "></div>
-            <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+            <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                 @Model.Unsubscribed.Total.ToString("#,##0")
                 <br />
                 <lbl>Unsubcribed</lbl>
@@ -728,16 +704,16 @@
             <div class="col-sm-2 campaign-manager float-left "></div>
             <div class="col-sm-1 campaign-manager float-left "></div>
             <div class="col-sm-3 campaign-manager float-left "></div>
-            <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25" style="display: none;">
+            <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                 @Model.Failed.Temporary.Total.ToString("#,##0")
                 <br />
                 <lbl>Failed(Temp)</lbl>
             </div>
         </div>*@
         <hr />
-        <div class="row">
+        <div class="row" style="padding: 0px; margin-left: 0px;">
 
-            <span id="span_deleteback">
+            <span id="span_deleteback" style="float: left;">
                 <a class="btn btn-lg btn-info" href="/Tag/Index">Back</a>
                 <input type="button" class="btn btn-lg btn-warning" onclick="fn_hide_span_yesno(1)" value="Delete">
             </span>

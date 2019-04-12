@@ -87,4 +87,14 @@ function fn_showchart(o) {
 
 function fn_showhide_chart(o) {
     $('#myChart11').slideToggle(600);
+
+    //if ($('#span_hideshowchart').html("Chart -"))
+    //{
+    //    $('#span_hideshowchart').html("Chart +");
+    //}
+
+    //if ($('#span_hideshowchart').html("Chart +"))
+    //{
+    //    $('#span_hideshowchart').html("Chart -");
+    //}
 }

@@ -481,9 +481,9 @@ label {
         height: 54px;
     }
 
-    .css-sm-table-1 tr:nth-child(even) {
-        background-color:#e6d7d7;
-    }
+        .css-sm-table-1 tr:nth-child(even) {
+            background-color: #f3f3f3;
+        }
 
 
     .css-sm-table-1 css-sm-animate-slideUp {
@@ -491,3 +491,18 @@ label {
 
     .css-sm-table-1 tr td{
     }
+
+.css-sm-pad-left-100
+{
+    padding-left: 100px;
+}
+
+.css-sm-text-align-right
+{
+    text-align: right;
+}
+
+.cs-sm-col-gray
+{
+    color: gray;
+}
