@@ -1,5 +1,4 @@
 ﻿using CampaignManager.Models;
-
 using CMBusiness.Services.Concrete;
 using MailgunAPIDirect;
 using MailgunAPIDirect.Entities;
