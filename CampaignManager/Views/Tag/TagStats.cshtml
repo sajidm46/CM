@@ -717,7 +717,7 @@
                 <a class="btn btn-lg btn-info" href="/Tag/Index">Back</a>
                 <input type="button" class="btn btn-lg btn-warning" onclick="fn_hide_span_yesno(1)" value="Delete">
             </span>
-            <span id="span_yesno" style="float: right;">
+            <span id="span_yesno" style="float: right;     margin-right: -38px;">
                 <label>Are yu sure to remove this tag?</label>
 
                 <input type="button" class="btn btn-lg btn-warning" onclick="location.href='@Url.Action("DeleteTag", "Tag", new { id = @Model.tag })'" value="Yes">
