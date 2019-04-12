@@ -19,7 +19,7 @@ namespace CampaignManager.Controllers
         // GET: /Tag/
         [Authorize]
         [HttpGet]
-        public ActionResult Index(string id, string tagFilter, string radioId= "")
+        public ActionResult Index(string id, string tagFilter, string radioId= "", string sortby = "")
         {
             List<Tag> listOfTags=new List<Tag>();
             
@@ -52,6 +52,15 @@ namespace CampaignManager.Controllers
                 case "all": listOfTagsFiltered = listOfTags.ToList();  break;
             }
             listOfTagsFiltered = listOfTagsFiltered.Where(x => x.first_seen.ToShortDateString() != "01/01/0001").ToList();
+
+            
+                if(sortby=="firstseenAZ") listOfTagsFiltered = listOfTagsFiltered.OrderBy(x => x.first_seen).ToList();
+                if (sortby == "firstseenZA") listOfTagsFiltered = listOfTagsFiltered.OrderByDescending(x => x.first_seen).ToList();
+            if (sortby == "lastseenAZ") listOfTagsFiltered = listOfTagsFiltered.OrderBy(x => x.last_seen).ToList();
+            if (sortby == "lastseenZA") listOfTagsFiltered = listOfTagsFiltered.OrderByDescending(x => x.last_seen).ToList();
+            if (sortby == "descriptionAZ") listOfTagsFiltered = listOfTagsFiltered.OrderBy(x => x.tag).ToList();
+            if (sortby == "descriptionZA") listOfTagsFiltered = listOfTagsFiltered.OrderByDescending(x => x.tag).ToList();
+
             //foreach (Tag item in listOfTagsFiltered) //get fully tag stats for each tag... this will slow down whole website to load up....
             //{
             //   // EventStats viewModel = tagService.GetTagStats(item.tag, item.first_seen);

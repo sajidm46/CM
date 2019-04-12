@@ -33,9 +33,34 @@
 
                 <div class="table-header">
                     <div class="row">
-                        <div class="col-sm-8 campaign-manager float-left ">@Html.Label("Tag", new { id = "lblTagHeader" })</div>
-                        <div class="col-sm-2 campaign-manager float-left ">@Html.Label("First Seen", new { id = "lblFirstSeenHeader" })</div>
-                        <div class="col-sm-2 campaign-manager float-right ">@Html.Label("Last Seen", new { id = "lblLastSeenHeader" })</div>
+                        <div class="col-sm-8 campaign-manager float-left ">
+                            @Html.Label("Tag", new { id = "lblTagHeader" })
+
+                                                <a href="/Tag/Index/?sortby=descriptionAZ" class="btn-sortAZ">
+                                                    <i class='glyphicon glyphicon-sort-by-alphabet'></i>
+                                                </a>
+                                                <a href="/Tag/Index/?sortby=descriptionZA" class="btn-sortZA">
+                                                    <i class='glyphicon glyphicon-sort-by-alphabet-alt'></i>
+                                                </a>
+                                            </div>
+                        <div class="col-sm-2 campaign-manager float-left ">
+                            @Html.Label("First Seen", new { id = "lblFirstSeenHeader" })
+                                                <a href="/Tag/Index/?sortby=firstseenAZ" class="btn-sortAZ">
+                                                    <i class='glyphicon glyphicon-sort-by-alphabet'></i>
+                                                </a>
+                                                <a href="/Tag/Index/?sortby=firstseenZA" class="btn-sortZA">
+                                                    <i class='glyphicon glyphicon-sort-by-alphabet-alt'></i>
+                                                </a>
+                                            </div>
+                        <div class="col-sm-2 campaign-manager float-right ">
+                            @Html.Label("Last Seen", new { id = "lblLastSeenHeader" })
+                                                <a href="/Tag/Index/?sortby=lastseenAZ" class="btn-sortAZ">
+                                                    <i class='glyphicon glyphicon-sort-by-alphabet'></i>
+                                                </a>
+                                                <a href="/Tag/Index/?sortby=lastseenZA" class="btn-sortZA">
+                                                    <i class='glyphicon glyphicon-sort-by-alphabet-alt'></i>
+                                                </a>
+                                            </div>
                     </div>
                 </div>
 

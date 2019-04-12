@@ -12,7 +12,7 @@
                     </span>
                 </div>
             </div>
-            <div class="col-sm-12 css-sm-summarytop" style="display: none;">
+            @*<div class="col-sm-12 css-sm-summarytop" style="display: none;">
                 <div class="col-sm-3 css-sm-animate-slideUp">
                     <input type="hidden" id="hdn_accepted" value="@Model.Accepted.Total" />
                     @{
@@ -61,7 +61,7 @@
 
                             if (Convert.ToDecimal(Model.Delivered.Total) + Convert.ToDecimal(Model.Failed.Permanent.Total) != 0)
                             {
-                                perc1 = ((Convert.ToDecimal(Model.Delivered.Total) / (Convert.ToDecimal(Model.Delivered.Total) + Convert.ToDecimal(Model.Failed.Permanent.Total)))).ToString("(##.##%)").Trim();
+                                perc1 = ((Convert.ToDecimal(Model.Delivered.Total) / (Convert.ToDecimal(Model.Delivered.Total) + Convert.ToDecimal(Model.Failed.Permanent.Total)))).ToString("(#0.##%)").Trim();
                             }
                         }
 
@@ -88,7 +88,7 @@
                             perc1 = "";
                             if (Convert.ToDecimal(Model.Delivered.Total) + Convert.ToDecimal(Model.Failed.Permanent.Total) != 0)
                             {
-                                perc1 = ((Convert.ToDecimal(Model.Failed.Permanent.Total) / (Convert.ToDecimal(Model.Delivered.Total) + Convert.ToDecimal(Model.Failed.Permanent.Total)))).ToString("(##.##%)").Trim();
+                                perc1 = ((Convert.ToDecimal(Model.Failed.Permanent.Total) / (Convert.ToDecimal(Model.Delivered.Total) + Convert.ToDecimal(Model.Failed.Permanent.Total)))).ToString("(#0.##%)").Trim();
                             }
                         }
 
@@ -101,7 +101,7 @@
                     <label2>Failed (Suppressed + Dropped)</label2>
                 </div>
 
-            </div>
+            </div>*@
 
 
             <h3>
@@ -112,7 +112,7 @@
     box-shadow: 0px 2px 3px #a8c3b9;
     background-color: #ffffff;">@Model.tag</label>
 </h3>
-<hr />
+
 
 
 @*<input id="btn_showchart" type="button" class="btn btn-sm btn-info" onclick="fn_showchart($('#myChart11'))" value="Show Chart" />*@
@@ -126,99 +126,160 @@
 
         <table class="css-sm-table-1">
             <thead>
-                <tr style="background-color: white; height: 80px; border-bottom: 5px solid #ecde97">
-                    <td>
-                        <div class="css-sm-animate-slideUp">
-                            <input type="hidden" id="hdn_accepted" value="@Model.Accepted.Total" />
-                            @{
-                                perc1 = "";
-                                perc1 = Model.Accepted.Total.ToString("#,##0");
+                <tr style="background-color: white; height: 80px; ">
+                    <td colspan="4">
+                        <table style="width: 100%;" class="css-sm-summarytop">
+                            <tr>
+                                <td>
+                                    <div class="css-sm-animate-slideUp">
+                                        <input type="hidden" id="hdn_accepted" value="@Model.Accepted.Total" />
+                                        @{
+                                           string percentage = "";
+                                            percentage = Model.Accepted.Total.ToString("#,##0");
 
-                            }
-                            <label id="lbl_accepted" style="color: #78c3c3">
-                                @(perc1)
-                            </label>
+                                        }
+                                        <label id="lbl_accepted" style="color: #78c3c3">
+                                            @(percentage)
+                                        </label>
 
 
 
-                            <br />
-                            <label2>Accepted</label2>
-                        </div>
+                                        <br />
+                                        <label2>Accepted</label2>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="css-sm-animate-slideUp">
+                                        <input type="hidden" id="hdn_processed" value="@(Convert.ToInt32(Model.Delivered.Total) + Convert.ToInt32(Model.Failed.Permanent.Total))" />
+                                        @{
+                                            percentage = (Convert.ToInt32(Model.Delivered.Total) + Convert.ToInt32(Model.Failed.Permanent.Total)).ToString("#,##0");
+                                        }
+                                        <label id="lbl_processed" style="color: rgba(208, 181, 112, 0.8)">
+                                            @(percentage)
+                                        </label>
+                                        <br />
+                                        <label2>Processed</label2>
+                                    </div>
+
+                                </td>
+                                <td>
+                                    <input type="hidden" id="hdn_delivered" value="@Model.Delivered.Total" />
+                                    <div class="css-sm-animate-slideUp">
+                                        @{
+                                            percentage = Model.Delivered.Total.ToString("#,##0");
+                                        }
+                                        <label id="lbl_delivered" style="color: #2dbd38">
+                                            @(percentage)
+                                        </label>
+
+
+
+                                        <prc style="color: #2dbd38">
+
+                                            @{
+
+                                                if (Convert.ToDecimal(Model.Delivered.Total) + Convert.ToDecimal(Model.Failed.Permanent.Total) != 0)
+                                                {
+                                                    percentage = ((Convert.ToDecimal(Model.Delivered.Total) / (Convert.ToDecimal(Model.Delivered.Total) + Convert.ToDecimal(Model.Failed.Permanent.Total)))).ToString("(#0.##%)").Trim();
+                                                }
+                                            }
+
+                                            @(percentage)
+
+
+                                        </prc>
+
+                                        <br />
+                                        <label2>Delivered</label2>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="css-sm-animate-slideUp">
+                                        <input type="hidden" id="hdn_failed" value="@Model.Failed.Permanent.Total" />
+                                        @{
+                                            percentage = Convert.ToInt32(Model.Failed.Permanent.Total).ToString("#,##0");
+                                        }
+
+                                        <label id="lbl_failed" style="color: #dc3535">
+                                            @(percentage)
+                                        </label>
+
+                                        <prc style="color: #dc3535">
+                                            @{
+                                                percentage = "";
+                                                if (Convert.ToDecimal(Model.Delivered.Total) + Convert.ToDecimal(Model.Failed.Permanent.Total) != 0)
+                                                {
+                                                    percentage = ((Convert.ToDecimal(Model.Failed.Permanent.Total) / (Convert.ToDecimal(Model.Delivered.Total) + Convert.ToDecimal(Model.Failed.Permanent.Total)))).ToString("(#0.##%)").Trim();
+                                                }
+                                            }
+
+                                            @(percentage)
+                                        </prc>
+
+                                        <br />
+                                        <label2>Failed (Suppressed + Dropped)</label2>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input type="hidden" id="hdn_uniqueopens" value="@Model.Opened.Unique" />
+                                    <div class="css-sm-animate-slideUp">
+                                        @{
+                                            percentage = Convert.ToInt32(Model.Opened.Unique).ToString("#,##0");
+                                        }
+
+                                        <label id="lbl_failed" style="color: rgba(29, 56, 129, 1)">
+                                            @(percentage)
+                                        </label>
+
+                                        <prc style="color: rgba(29, 56, 129, 1)">
+                                            @{
+                                                percentage = "";
+                                                if (Convert.ToDecimal(Model.Opened.Unique) + Convert.ToDecimal(Model.Opened.Unique) != 0)
+                                                {
+                                                    percentage = ((Convert.ToDecimal(Model.Opened.Unique) / (Convert.ToDecimal(Model.Delivered.Total) + Convert.ToDecimal(Model.Failed.Permanent.Total)))).ToString("(#0.##%)").Trim();
+                                                }
+                                            }
+
+                                            @(percentage)
+                                        </prc>
+
+                                        <br />
+                                        <label2>Unique Opens</label2>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input type="hidden" id="hdn_uniqueclicks" value="@Model.Clicked.Unique" />
+                                    <div class="css-sm-animate-slideUp">
+                                        @{
+                                            percentage = Convert.ToInt32(Model.Clicked.Unique).ToString("#,##0");
+                                        }
+
+                                        <label id="lbl_failed" style="color: rgba(202, 65, 222, 1)">
+                                            @(percentage)
+                                        </label>
+
+                                        <prc style="color: rgba(202, 65, 222, 1)">
+                                            @{
+                                                percentage = "";
+                                                if (Convert.ToDecimal(Model.Clicked.Unique) + Convert.ToDecimal(Model.Failed.Permanent.Total) != 0)
+                                                {
+                                                    percentage = ((Convert.ToDecimal(Model.Clicked.Unique) / (Convert.ToDecimal(Model.Delivered.Total) + Convert.ToDecimal(Model.Failed.Permanent.Total)))).ToString("(#0.##%)").Trim();
+                                                }
+                                            }
+
+                                            @(percentage)
+                                        </prc>
+
+                                        <br />
+                                        <label2>Unique Clicks</label2>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
                     </td>
-                    <td>
-                        <div class="css-sm-animate-slideUp">
-                            <input type="hidden" id="hdn_processed" value="@(Convert.ToInt32(Model.Delivered.Total) + Convert.ToInt32(Model.Failed.Permanent.Total))" />
-                            @{
-                                perc1 = (Convert.ToInt32(Model.Delivered.Total) + Convert.ToInt32(Model.Failed.Permanent.Total)).ToString("#,##0");
-                            }
-                            <label id="lbl_processed" style="color: rgba(208, 181, 112, 0.8)">
-                                @(perc1)
-                            </label>
-                            <br />
-                            <label2>Processed</label2>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="css-sm-animate-slideUp">
-                            @{
-                                perc1 = Model.Delivered.Total.ToString("#,##0");
-                            }
-                            <label id="lbl_delivered" style="color: #2dbd38">
-                                @(perc1)
-                            </label>
-
-
-
-                            <prc style="color: #2dbd38">
-
-                                @{
-
-                                    if (Convert.ToDecimal(Model.Delivered.Total) + Convert.ToDecimal(Model.Failed.Permanent.Total) != 0)
-                                    {
-                                        perc1 = ((Convert.ToDecimal(Model.Delivered.Total) / (Convert.ToDecimal(Model.Delivered.Total) + Convert.ToDecimal(Model.Failed.Permanent.Total)))).ToString("(##.##%)").Trim();
-                                    }
-                                }
-
-                                @(perc1)
-
-
-                            </prc>
-
-                            <br />
-                            <label2>Delivered</label2>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="css-sm-animate-slideUp">
-                            <input type="hidden" id="hdn_failed" value="@Model.Failed.Permanent.Total" />
-                            @{
-                                perc1 = Convert.ToInt32(Model.Failed.Permanent.Total).ToString("#,##0");
-                            }
-
-                            <label id="lbl_failed" style="color: #dc3535">
-                                @(perc1)
-                            </label>
-
-                            <prc style="color: #dc3535">
-                                @{
-                                    perc1 = "";
-                                    if (Convert.ToDecimal(Model.Delivered.Total) + Convert.ToDecimal(Model.Failed.Permanent.Total) != 0)
-                                    {
-                                        perc1 = ((Convert.ToDecimal(Model.Failed.Permanent.Total) / (Convert.ToDecimal(Model.Delivered.Total) + Convert.ToDecimal(Model.Failed.Permanent.Total)))).ToString("(##.##%)").Trim();
-                                    }
-                                }
-
-                                @(perc1)
-                            </prc>
-
-                            <br />
-                            <label2>Failed (Suppressed + Dropped)</label2>
-                        </div>
-                    </td>
-                    <td></td>
-                    <td></td>
+                    
                 </tr>
-                <tr style="background-color: white; ">
+                <tr style="background-color: white; border-bottom: none; ">
                     <td colspan="4" style="padding-top: 20px;">
                         <div id="span_hideshowchart" class="btn btn-sm btn-default" onclick="fn_showhide_chart(0)" style="float: left; margin-bottom: 30px; font-size: 18px;">
                             Show/Hide Chart
@@ -392,7 +453,7 @@
                     <td></td>
                     <td class="css-sm-pad-left-100">
                         <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
-                            @Model.Opened.Total.ToString("#,##0")
+                            @Model.Stored.Total.ToString("#,##0")
                             <br />
                             <lbl>stored</lbl>
                         </div>
@@ -417,6 +478,7 @@
                         </div>
                     </td>
                     <td class="css-sm-pad-left-100">
+                        
                         <div class="col-sm-2 campaign-manager float-left css-sm-animate-fadeIn   css-sm-fontsize25 cs-sm-col-gray" style="display: none;">
                             @Model.Clicked.Total.ToString("#,##0")
                             <br />

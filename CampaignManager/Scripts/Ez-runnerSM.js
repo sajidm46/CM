@@ -48,26 +48,34 @@ function fn_showchart(o) {
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ["Accepted", "Processed", "Delivered", "Failed"],
+            labels: ["Accepted", "Processed", "Delivered", "Failed", "Unique Opens", "Unique Clicks"],
             datasets: [{
                 label: 'Hide',
                 data: [
                     $('#hdn_accepted').val(),
                     $('#hdn_processed').val(),
                     $('#hdn_delivered').val(),
-                    $('#hdn_failed').val()],
+                    $('#hdn_failed').val(),
+                    $('#hdn_uniqueopens').val(),
+                    $('#hdn_uniqueclicks').val()
+                    
+                    ],
                 backgroundColor: [
                     'rgba(126, 234, 234, 0.6)',
                     'rgba(208, 181, 112, 0.8)',
                     'rgba(39, 206, 122, 0.6)',
-                    'rgba(255, 99, 132, 0.6)'
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(56, 59, 185, 0.6)',
+                    'rgba(202, 65, 222, 0.6)'
                     
                 ],
                 borderColor: [
                     'rgb(100, 186, 186, 1)',
                     'rgba(180, 161, 112, 1)',
                     'rgba(29, 147, 88, 1 )',
-                    'rgba(255,99,132,1)'
+                    'rgba(255,99,132,1)',
+                    'rgba(29, 56, 129, 1)',
+                    'rgba(202, 65, 222, 1)'
                     
                 ],
                 borderWidth: 1
@@ -97,4 +105,8 @@ function fn_showhide_chart(o) {
     //{
     //    $('#span_hideshowchart').html("Chart -");
     //}
+}
+
+function fn_sortby(o) {
+    alert("'firstseen'");
 }
